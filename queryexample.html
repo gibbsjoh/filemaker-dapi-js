@@ -36,6 +36,8 @@
         let query = [{'fields' : [ {'fieldname' : queryField, 'fieldvalue' : queryValue}],'options':{'omit': false}}]
         // run the query
         let findResult = api.findRecords(theLayout, query);
+        //close the connection
+        let theLogout = api.logout()
         // parse out the result as needed
         // in this case we're just getting a single field (ChannelName) from the first returned record
         exampleResult = findResult[0].fieldData['ChannelName'];
