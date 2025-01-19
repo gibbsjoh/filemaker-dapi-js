@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FileMaker Data Query</title>
+</head>
+<body>
+    <h1>FileMaker Data Query</h1>
+    <h2>Result</h2>
+    <div id="result"></div>
+    <script src="https://github.com/myFMbutler/myFMApiLibrary-for-JS/blob/296268cd4c10dc221a124d1a33ce3114562201cf/DataApi.js"></script>
+    <script>
+        // set up all the values for the query/server
+        var myServer = 'https://fmserver.smthng.pw/fmi/data';
+        var myDatabase = 'HomeList';
+        var loginName = 'admin';
+        var thePassword = 'dance200';
+        var queryField = 'ChannelName';
+        var queryValue = '*';
+        var theLayout = 'TVCHANNELS';
+
+        // build array for connecting to the FM server
+        let options = {
+            'apiUrl': myServer,
+            'databaseName': myDatabase,
+            'login': loginName,
+            'password': thePassword
+        }
+
+        //log into the server
+        let api = new DataApi(options);
+        // log in
+        let theLogin = api.login();
+        //build the query
+        let query = [{'fields' : [ {'fieldname' : queryField, 'fieldvalue' : queryValue}],'options':{'omit': false}}]
+        // run the query
+        let findResult = api.findRecords(theLayout, query);
+        // parse out the result as needed
+        // in this case we're just getting a single field (ChannelName) from the first returned record
+        exampleResult = findResult[0].fieldData['ChannelName'];
+        document.getElementById("result").innerHTML = exampleResult;
+    </script>
+</body>
+</html>
