@@ -7,8 +7,10 @@ function hexToAscii(hex) {
 }
 
 function decryptCreds(theString){
-    var theDecryptedItem = CryptoJS.AES.decrypt(theString, "mySecret");
-    var thePlaintext = hexToAscii(theDecryptedItem);
+    var theDecryptedItem = CryptoJS.AES.decrypt(theString, "MySecret");
+    var thePlaintext = theDecryptedItem.toString(CryptoJS.AES.Utf8)
+    thePlaintext = hexToAscii(thePlaintext);
+    //console.log(thePlaintext)
     return thePlaintext;
 
 }
