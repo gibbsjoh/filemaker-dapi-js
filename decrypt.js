@@ -14,16 +14,3 @@ function decryptCreds(theString){
     return thePlaintext;
 
 }
-// var encryptedAES = CryptoJS.AES.encrypt("Message", "LutzShampoo");
-// console.log(encryptedAES);
-// theString = encryptedAES.toString(CryptoJS.AES.Utf8);
-// console.log(theString);
-
-// //decrypt
-// var thePassword = CryptoJS.AES.decrypt(theString, "LutzShampoo");
-// //console.log(thePassword.toString(CryptoJS.AES.Utf8));
-// var thePlaintext = thePassword.toString(CryptoJS.AES.Utf8);
-// thePlaintext = hexToAscii(thePlaintext);
-// console.log(thePlaintext);
-// //var decryptedBytes = CryptoJS.AES.decrypt(encryptedAES, "My Secret Passphrase");
-
