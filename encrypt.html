@@ -1,0 +1,23 @@
+<script src="https://unpkg.com/crypto-js@4.1.1/crypto-js.js"></script>
+
+<script>
+    function hexToAscii(hex) {
+    let asciiStr = '';
+    for (let i = 0; i < hex.length; i += 2) {
+        asciiStr += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    }
+    return asciiStr;
+}
+    var encryptedAES = CryptoJS.AES.encrypt("ThePassword", "MySecret");
+    console.log(encryptedAES);
+    theString = encryptedAES.toString(CryptoJS.AES.Utf8);
+    console.log(theString);
+
+    //decrypt
+    var thePassword = CryptoJS.AES.decrypt(theString, "");
+    //console.log(thePassword.toString(CryptoJS.AES.Utf8));
+    var thePlaintext = thePassword.toString(CryptoJS.AES.Utf8);
+    thePlaintext = hexToAscii(thePlaintext);
+    console.log(thePlaintext);
+    //var decryptedBytes = CryptoJS.AES.decrypt(encryptedAES, "My Secret Passphrase");
+</script>
